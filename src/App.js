@@ -1,17 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-import './style.css';
-import Header from './Header';
-import Main from './Main.js';
-import './script.js';
+import logo from "./logo.svg";
+import "./App.css";
+import "./style.css";
+
+import Main from "./Main.js";
+import "./script.js";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-  const hotelSlug = 'hotel-blue-sky'
   return (
-    <div className="App">
-      <Header />
-      <Main slug={hotelSlug}/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/hotel/:slug" element={<Main />} />
+      </Routes>
+    </Router>
   );
 }
 

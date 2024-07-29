@@ -17,6 +17,7 @@ const Main = () => {
   const { slug } = useParams();
 
   const [hotel, setHotel] = useState(null);
+  const [rooms, setRooms] = useState(null)
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -30,7 +31,18 @@ const Main = () => {
       }
     };
 
+    const fetcRooms = async () => {
+      try {
+        const response = await axios.get(`${config.apiBaseUrl}/hotel/${slug}/rooms`);
+        console.log(response);
+        setRooms(response.data);
+      } catch (err) {
+        setError("Rooms not found");
+      }
+    };
+
     fetchHotel();
+    fetcRooms();
   }, [slug]);
 
   if (error) {
@@ -57,7 +69,7 @@ const Main = () => {
       <main>
         <ListingSection hotel={hotel} />
         <InfoSection hotel={hotel} />
-        <SleepSection photos ={hotel.images}/>
+        <SleepSection rooms ={rooms}/>
         <AmenitiesSection amenities = {hotel.amenities} />
         <CalendarSection />
         <HostDetailsSection host={hotel.host_information}/>

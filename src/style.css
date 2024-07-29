@@ -337,6 +337,47 @@ main {
     font-size: 14px;
     color: #777;
 }
+.sleep-section {
+    padding: 20px;
+}
+
+.sleep-details-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding: 10px 0;
+    white-space: nowrap; /* Prevent wrapping */
+    gap: 5px; /* Space between items */
+}
+
+.sleep-details {
+    min-width: 200px; /* Adjust as needed */
+    flex-shrink: 0; /* Prevent shrinking */
+    white-space: normal; /* Ensure wrapping within each item */
+    border: 1px solid #ddd; /* Optional: Add border for better visibility */
+    border-radius: 8px; /* Optional: Add border radius for better visibility */
+    overflow: hidden; /* Ensure content does not overflow */
+}
+
+.sleep-details img {
+    width: 100%; /* Set to 100% to take full width of the container */
+    height: 150px; /* Set a fixed height for equal size */
+    object-fit: cover; /* Ensure the image covers the area */
+}
+
+.sleep-info {
+    padding: 10px;
+    text-align: center; /* Center-align text */
+}
+
+.sleep-title {
+    font-weight: bold;
+}
+
+.sleep-description {
+    color: #666;
+}
+
+
 
 .listing-header h1 {
     font-size: 24px;

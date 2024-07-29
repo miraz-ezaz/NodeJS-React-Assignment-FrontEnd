@@ -2,8 +2,7 @@ import React from 'react';
 
 const SearchButtons = () => {
   const showHiddenSearchBar = () => {
-    document.getElementById('mainSearchBar').style.display = 'none'
-    document.getElementById('hiddenSearchbar').style.display = 'flex';
+    
   };
 
   return (

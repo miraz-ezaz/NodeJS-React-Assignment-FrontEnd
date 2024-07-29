@@ -8,6 +8,7 @@ import AmenitiesSection from "./AmenitiesSection.js";
 import CalendarSection from "./CalendarSection.js";
 import HostDetailsSection from "./HostDetailsSection.js";
 import ThingsToKnowSection from "./ThingsToKnowSection.js";
+import ShimmerComponent from "./Shimmer.js";
 
 import axios from "axios";
 import config from "./config.json";
@@ -42,7 +43,12 @@ const Main = () => {
   }
 
   if (!hotel) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Header />
+        <div><ShimmerComponent /></div>
+      </div>
+    );
   }
 
   return (
@@ -50,11 +56,11 @@ const Main = () => {
       <Header />
       <main>
         <ListingSection hotel={hotel} />
-        <InfoSection />
-        <SleepSection />
-        <AmenitiesSection />
+        <InfoSection hotel={hotel} />
+        <SleepSection photos ={hotel.images}/>
+        <AmenitiesSection amenities = {hotel.amenities} />
         <CalendarSection />
-        <HostDetailsSection />
+        <HostDetailsSection host={hotel.host_information}/>
         <ThingsToKnowSection />
       </main>
     </div>

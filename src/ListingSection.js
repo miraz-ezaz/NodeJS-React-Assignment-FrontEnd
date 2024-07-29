@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import config from "./config.json";
 
 const ListingSection = ({hotel}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSaved, setIsSaved] = useState(false);
 
-    const photos = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"];
+    const photos = hotel.images;
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -37,7 +38,7 @@ const ListingSection = ({hotel}) => {
                 <h1>{hotel.title}</h1>
 
                 <div className="actions">
-                    <div className="action-btn" onClick={openModal}>
+                    <div className="action-btn">
                         <svg
                             viewBox="0 0 32 32"
                             xmlns="http://www.w3.org/2000/svg"
@@ -68,20 +69,20 @@ const ListingSection = ({hotel}) => {
             </div>
             <div className="gallery">
                 <div className="main-image">
-                    <img src={photos[currentIndex]} alt="Main Image" />
+                    <img src={`${config.apiBaseUrl}${photos[0]}`} alt="Main Image" />
                 </div>
                 <div className="thumbnail-images">
-                    {photos.map((photo, index) => (
-                        <img
-                            key={index}
-                            src={photo}
-                            alt={`Image ${index + 2}`}
-                            onClick={() => setCurrentIndex(index)}
-                            className={index === currentIndex ? 'active' : ''}
-                        />
-                    ))}
-                </div>
-                <button className="show-all-photos" onClick={openGallery}>
+                {photos.slice(1).map((photo, index) => (
+                    <img
+                        key={index+1}
+                        src={`${config.apiBaseUrl}${photo}`}
+                        alt={`Image ${index + 1}`}
+                        onClick={() => setCurrentIndex(index)}
+                        className={index === currentIndex ? 'active' : ''}
+                    />
+                ))}
+            </div>
+                <button className="show-all-photos">
                     Show all photos
                 </button>
             </div>

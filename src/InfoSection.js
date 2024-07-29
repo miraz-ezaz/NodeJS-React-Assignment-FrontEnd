@@ -1,6 +1,7 @@
 import React from 'react';
+import config from "./config.json";
 
-const InfoSection = () => {
+const InfoSection = ({hotel}) => {
     const handleCheckAvailability = () => {
         // Add functionality for checking availability
         console.log('Checking availability...');
@@ -15,16 +16,16 @@ const InfoSection = () => {
         <section className="infoSection">
             <section className="rental-listing">
                 <div className="listing-header">
-                    <h1>Entire rental unit in Lima, Peru</h1>
-                    <p>2 guests · 1 bedroom · 1 bed · 1 bathroom</p>
+                    <h1>{`Entire rental unit in ${hotel.address}`} </h1>
+                    <p>{`${hotel.guest_count} guests · ${hotel.bedroom_count} bedroom · ${hotel.bedroom_count} bed · ${hotel.bathroom_count} bathroom`}</p>
                     <p className="new-label">★ New</p>
                 </div>
                 <div className="host-info">
                     <div className="host-profile">
-                        <img src="host.jpg" alt="Host" />
+                        <img src={`${config.apiBaseUrl}${hotel.host_information.image}`} alt="Host" />
                         <div>
-                            <p>Hosted by Fernando</p>
-                            <p>Superhost · 7 years hosting</p>
+                            <p>{`Hosted by ${hotel.host_information.name}` }</p>
+                            <p>{`${hotel.host_information.category}· ${hotel.host_information.years}  years hosting`}</p>
                         </div>
                     </div>
                 </div>
@@ -34,7 +35,7 @@ const InfoSection = () => {
                         <p>Check yourself in with the smartlock.</p>
                     </div>
                     <div className="feature">
-                        <p>⭐ Fernando is a Superhost</p>
+                        <p>{`⭐ ${hotel.host_information.name} is a ${hotel.host_information.category}`}</p>
                         <p>Superhosts are experienced, highly rated Hosts.</p>
                     </div>
                 </div>
@@ -42,10 +43,8 @@ const InfoSection = () => {
                     <p>Some info has been automatically translated. <a href="#">Show original</a></p>
                 </div>
                 <div className="listing-description">
-                    <p>Welcome to our brand-new 1 bedroom apartment, in a quiet and central location next to a park!</p>
-                    <p>It's conveniently located in Pueblo Libre, just 25min. away from the airport. Steps away from
-                        Clínica Stella Maris, Universidad Antonio Ruiz de Montoya, Instituto Británico, Hospital Santa
-                        Rosa, YMCA Peru and Alas Peruanas University. It's also very close to La ...</p>
+                    
+                    <p>{hotel.description}</p>
                     <a href="#">Show more</a>
                 </div>
             </section>

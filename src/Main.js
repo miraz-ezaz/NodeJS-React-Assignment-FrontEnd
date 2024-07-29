@@ -27,7 +27,7 @@ const Main = () => {
         console.log(response);
         setHotel(response.data);
       } catch (err) {
-        setError("Hotel not found");
+        setError("Not found");
       }
     };
 
@@ -37,7 +37,7 @@ const Main = () => {
         console.log(response);
         setRooms(response.data);
       } catch (err) {
-        setError("Rooms not found");
+        setError("Not found");
       }
     };
 

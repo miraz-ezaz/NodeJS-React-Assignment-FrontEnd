@@ -54,7 +54,7 @@ const Main = () => {
     );
   }
 
-  if (!hotel) {
+  if (!hotel || !rooms) {
     return (
       <div>
         <Header />
